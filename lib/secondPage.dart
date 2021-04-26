@@ -13,16 +13,16 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-
   @override
   Widget build(BuildContext context) {
+    FoodProduct product2=widget.product;
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Page"),
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Text(widget.product.name),
+          child: Text(product2.name),
         ),
       ),
     );
