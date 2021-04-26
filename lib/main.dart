@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'foodproduct.dart';
+import 'secondPage.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -37,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  String mode="total";
+  String mode = "total";
   final nameTextEditController = new TextEditingController();
   final categoryTextEditController = new TextEditingController();
   final volumeTextEditController = new TextEditingController();
@@ -51,32 +53,33 @@ class _MyHomePageState extends State<MyHomePage> {
   final sugarsTextEditController = new TextEditingController();
   final sodiumTextEditController = new TextEditingController();
 
-  String submitName="error";
-  String submitCategory="error";
-  String submitVolume="error";
-  String submitEnergy="error";
-  String submitProtein="error";
-  String submitTotalFat="error";
-  String submitSaturatedFat="error";
-  String submitTransFat="error";
-  String submitCarbohydrates="error";
-  String submitDietaryFibre="error";
-  String submitSugars="error";
-  String submitSodium="error";
+  String submitName = "error";
+  String submitCategory = "error";
+  String submitVolume = "error";
+  String submitEnergy = "error";
+  String submitProtein = "error";
+  String submitTotalFat = "error";
+  String submitSaturatedFat = "error";
+  String submitTransFat = "error";
+  String submitCarbohydrates = "error";
+  String submitDietaryFibre = "error";
+  String submitSugars = "error";
+  String submitSodium = "error";
   @override
   void initState() {
     super.initState();
   }
+
   void _changemode() {
     setState(() {
-      if(mode=="total"){
-        mode="100";
-      }
-      else{
-        mode="total";
+      if (mode == "total") {
+        mode = "100";
+      } else {
+        mode = "total";
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,15 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 height: 44,
-                child:Row(
+                child: Row(
                   children: [
-                    Text("Mode:  "+mode),
-                    SizedBox(width: 8,),
+                    Text("Mode:  " + mode),
+                    SizedBox(
+                      width: 8,
+                    ),
                     ElevatedButton(
                       onPressed: _changemode,
                       child: new Text('Change mode'),
                     ),
-
                   ],
                 ),
               ),
@@ -120,15 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product Name',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -150,15 +152,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product category',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -180,15 +180,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product volume',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -210,15 +208,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product energy',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -236,19 +232,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   keyboardType: TextInputType.number,
                   autofocus: false,
                   textInputAction: TextInputAction.next,
-                  style: TextStyle(color: Colors.black,fontSize: 14),
+                  style: TextStyle(color: Colors.black, fontSize: 14),
                   decoration: InputDecoration(
                     hintText: 'Product protein',
-                    hintStyle: TextStyle(color: Colors.black,fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -270,15 +264,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product totalFat',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -300,15 +292,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product saturatedFat',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -330,15 +320,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product transFat',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -360,15 +348,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product carbohydrates',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -390,15 +376,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product dietarytFibre',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -420,15 +404,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     hintText: 'Product sugars',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
@@ -443,88 +425,95 @@ class _MyHomePageState extends State<MyHomePage> {
                     return null;
                   },
                   controller: sodiumTextEditController,
-                  keyboardType:  TextInputType.number,
+                  keyboardType: TextInputType.number,
                   autofocus: false,
                   textInputAction: TextInputAction.next,
                   style: TextStyle(color: Colors.black, fontSize: 14),
                   decoration: InputDecoration(
                     hintText: 'Product sodium',
                     hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    contentPadding:
-                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black, width: 5.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 5.0),
-                        borderRadius: BorderRadius.circular(14.0)
-                    ),
+                        borderRadius: BorderRadius.circular(14.0)),
                   ),
                 ),
               ),
               ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   print(mode);
 
-                  submitName=nameTextEditController.text;
-                  submitCategory=categoryTextEditController.text;
-                  submitVolume=volumeTextEditController.text;
-                  submitEnergy=energyTextEditController.text;
-                  submitProtein=proteinTextEditController.text;
-                  submitTotalFat=totalFatTextEditController.text;
-                  submitSaturatedFat=saturatedFatTextEditController.text;
-                  submitTransFat=transFatTextEditController.text;
-                  submitCarbohydrates=carbohydratesTextEditController.text;
-                  submitDietaryFibre=dietarytFibreTextEditController.text;
-                  submitSugars=sugarsTextEditController.text;
-                  submitSodium=sodiumTextEditController.text;
+                  submitName = nameTextEditController.text;
+                  submitCategory = categoryTextEditController.text;
+                  submitVolume = volumeTextEditController.text;
+                  submitEnergy = energyTextEditController.text;
+                  submitProtein = proteinTextEditController.text;
+                  submitTotalFat = totalFatTextEditController.text;
+                  submitSaturatedFat = saturatedFatTextEditController.text;
+                  submitTransFat = transFatTextEditController.text;
+                  submitCarbohydrates = carbohydratesTextEditController.text;
+                  submitDietaryFibre = dietarytFibreTextEditController.text;
+                  submitSugars = sugarsTextEditController.text;
+                  submitSodium = sodiumTextEditController.text;
 
-                  print("submitName: "+submitName);
-                  print("submitCategory: "+submitCategory);
-                  print("submitVolume: "+submitVolume);
-                  print("submitEnergy: "+submitEnergy);
-                  print("submitProtein: "+submitProtein);
-                  print("submitTotalFat: "+submitTotalFat);
-                  print("submitSaturatedFat: "+submitSaturatedFat);
-                  print("submitTransFat: "+submitTransFat);
-                  print("submitCarbohydrates: "+submitCarbohydrates);
-                  print("submitDietaryFibre: "+submitDietaryFibre);
-                  print("submitSugars: "+submitSugars);
-                  print("submitSodium: "+submitSodium);
-                  FoodProduct tempProduct= new FoodProduct();
-                  if(mode=="total"){
-                    tempProduct.name=submitName;
-                    tempProduct.category=submitCategory;
-                    tempProduct.volumeOrweight=double.parse(submitVolume);
-                    tempProduct.energy=double.parse(submitEnergy);
-                    tempProduct.protein=double.parse(submitProtein);
-                    tempProduct.totalFat=double.parse(submitTotalFat);
-                    tempProduct.saturatedFat=double.parse(submitSaturatedFat);
-                    tempProduct.transFat=double.parse(submitTransFat);
-                    tempProduct.carbohydrates=double.parse(submitCarbohydrates);
-                    tempProduct.dietarytFibre=double.parse(submitDietaryFibre);
-                    tempProduct.sugars=double.parse(submitSugars);
-                    tempProduct.sodium=double.parse(submitSodium);
+                  print("submitName: " + submitName);
+                  print("submitCategory: " + submitCategory);
+                  print("submitVolume: " + submitVolume);
+                  print("submitEnergy: " + submitEnergy);
+                  print("submitProtein: " + submitProtein);
+                  print("submitTotalFat: " + submitTotalFat);
+                  print("submitSaturatedFat: " + submitSaturatedFat);
+                  print("submitTransFat: " + submitTransFat);
+                  print("submitCarbohydrates: " + submitCarbohydrates);
+                  print("submitDietaryFibre: " + submitDietaryFibre);
+                  print("submitSugars: " + submitSugars);
+                  print("submitSodium: " + submitSodium);
+                  FoodProduct tempProduct = new FoodProduct();
+                  if (mode == "total") {
+                    tempProduct.name = submitName;
+                    tempProduct.category = submitCategory;
+                    tempProduct.volumeOrweight = double.parse(submitVolume);
+                    tempProduct.energy = double.parse(submitEnergy);
+                    tempProduct.protein = double.parse(submitProtein);
+                    tempProduct.totalFat = double.parse(submitTotalFat);
+                    tempProduct.saturatedFat = double.parse(submitSaturatedFat);
+                    tempProduct.transFat = double.parse(submitTransFat);
+                    tempProduct.carbohydrates =
+                        double.parse(submitCarbohydrates);
+                    tempProduct.dietarytFibre =
+                        double.parse(submitDietaryFibre);
+                    tempProduct.sugars = double.parse(submitSugars);
+                    tempProduct.sodium = double.parse(submitSodium);
                   }
-                  if(mode=="100"){
-                    tempProduct.name=submitName;
-                    tempProduct.category=submitCategory;
-                    tempProduct.volumeOrweight=double.parse(submitVolume);
-                    tempProduct.energy_100=double.parse(submitEnergy);
-                    tempProduct.protein_100=double.parse(submitProtein);
-                    tempProduct.totalFat_100=double.parse(submitTotalFat);
-                    tempProduct.saturatedFat_100=double.parse(submitSaturatedFat);
-                    tempProduct.transFat_100=double.parse(submitTransFat);
-                    tempProduct.carbohydrates_100=double.parse(submitCarbohydrates);
-                    tempProduct.dietarytFibre_100=double.parse(submitDietaryFibre);
-                    tempProduct.sugars_100=double.parse(submitSugars);
-                    tempProduct.sodium_100=double.parse(submitSodium);
+                  if (mode == "100") {
+                    tempProduct.name = submitName;
+                    tempProduct.category = submitCategory;
+                    tempProduct.volumeOrweight = double.parse(submitVolume);
+                    tempProduct.energy_100 = double.parse(submitEnergy);
+                    tempProduct.protein_100 = double.parse(submitProtein);
+                    tempProduct.totalFat_100 = double.parse(submitTotalFat);
+                    tempProduct.saturatedFat_100 =
+                        double.parse(submitSaturatedFat);
+                    tempProduct.transFat_100 = double.parse(submitTransFat);
+                    tempProduct.carbohydrates_100 =
+                        double.parse(submitCarbohydrates);
+                    tempProduct.dietarytFibre_100 =
+                        double.parse(submitDietaryFibre);
+                    tempProduct.sugars_100 = double.parse(submitSugars);
+                    tempProduct.sodium_100 = double.parse(submitSodium);
                   }
                   tempProduct.calculateTotalNutrient();
                   tempProduct.printproduct();
-
-
-                  },
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SecondPage(
+                            product: tempProduct,
+                          )));
+                },
                 child: new Text('Next Page'),
               ),
             ],
