@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_input_app/foodproduct.dart';
 import 'package:flutter/material.dart';
 import 'foodproduct.dart';
@@ -37,7 +38,7 @@ class _SecondPageState extends State<ThirdPage> {
     );
   }
   void uploadFoodProduct(FoodProduct product){
-    FirebaseFirestore.instance.collection('detail')
+    FirebaseFirestore.instance.collection('foodProduct')
         .doc(product.name)
         .set({
       'category': product.category,
@@ -50,6 +51,6 @@ class _SecondPageState extends State<ThirdPage> {
       'dietarytFibre' : product.dietarytFibre,
       'sugars' : product.sugars,
       'sodium' : product.sodium,
-    });
+    }).then((value) => print("Uploaded")).catchError((onError) => print("Failed:" + onError));
   }
 }

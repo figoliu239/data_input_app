@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "380783917788",
+    "project_id": "food-education-383e1",
+    "storage_bucket": "food-education-383e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380783917788:android:ed4b4939934c5cee14d219",
+        "android_client_info": {
+          "package_name": "com.example.data_input_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380783917788-1urgh2bgrc9okns1udhc3n3su913dghl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQzkhWcMKLynpnly_PU6QN7cBbC1fl89k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380783917788-1urgh2bgrc9okns1udhc3n3su913dghl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380783917788:android:9323bef4cbfe77c314d219",
+        "android_client_info": {
+          "package_name": "com.example.food_education_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380783917788-6o3jlg1o9nhom94351fn51ct3g8fvfk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_education_app",
+            "certificate_hash": "1eecf8de4095ba857488c8ec2db9fa8718b5077f"
+          }
+        },
+        {
+          "client_id": "380783917788-ms8uj9oi0qvcs3fkhm0k04unst3ac6is.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_education_app",
+            "certificate_hash": "aa2c8c8b54594f1654c660a648c889eb2edd96ee"
+          }
+        },
+        {
+          "client_id": "380783917788-1urgh2bgrc9okns1udhc3n3su913dghl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQzkhWcMKLynpnly_PU6QN7cBbC1fl89k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380783917788-1urgh2bgrc9okns1udhc3n3su913dghl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
