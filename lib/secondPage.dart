@@ -2,7 +2,7 @@ import 'package:data_input_app/foodproduct.dart';
 import 'package:flutter/material.dart';
 import 'foodproduct.dart';
 import 'thirdPage.dart';
-
+import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
 class SecondPage extends StatefulWidget {
   SecondPage({
     Key key,
