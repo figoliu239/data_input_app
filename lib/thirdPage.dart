@@ -29,6 +29,7 @@ class _SecondPageState extends State<ThirdPage> {
               ElevatedButton(
                   child: new Text('Upload to firebase'),
                   onPressed: () {
+                    uploadFoodProduct(product2);
 
                   })
             ],
@@ -41,6 +42,8 @@ class _SecondPageState extends State<ThirdPage> {
     FirebaseFirestore.instance.collection('foodProduct')
         .doc(product.name)
         .set({
+      'name':product.name,
+      'volumeOrweight':product.volumeOrweight,
       'category': product.category,
       'energy' : product.energy,
       'protein' : product.protein,
