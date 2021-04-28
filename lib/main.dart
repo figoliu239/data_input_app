@@ -545,21 +545,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SecondPage(
-                            product: tempProduct,
+                          builder: (context) => OCRPage2(
+                            //product: tempProduct,
                           )));
                 },
                 child: new Text('Next Page'),
               ),
-              ElevatedButton(
-                  child: new Text('OCR Page'),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OCRPage2(
-                            )));
-                  })
+              // ElevatedButton(
+              //     child: new Text('OCR Page'),
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => OCRPage2(
+              //               )));
+              //     })
             ],
           ),
         ),

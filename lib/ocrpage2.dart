@@ -11,15 +11,6 @@ class OCRPage2 extends StatefulWidget {
 }
 
 class _OCRPageState2 extends State<OCRPage2> {
-  // int _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
-  // int _onlyFormatBarcode = Barcode.ALL_FORMATS;
-  // bool _autoFocusBarcode = true;
-  // bool _torchBarcode = false;
-  // bool _multipleBarcode = false;
-  // bool _waitTapBarcode = false;
-  // bool _showTextBarcode = false;
-  // Size _previewBarcode;
-  // List<Barcode> _barcodes = [];
 
   int _cameraOcr = FlutterMobileVision.CAMERA_BACK;
   bool _autoFocusOcr = true;
@@ -30,30 +21,15 @@ class _OCRPageState2 extends State<OCRPage2> {
   Size _previewOcr;
   List<OcrText> _textsOcr = [];
 
-  // int _cameraFace = FlutterMobileVision.CAMERA_FRONT;
-  // bool _autoFocusFace = true;
-  // bool _torchFace = false;
-  // bool _multipleFace = true;
-  // bool _showTextFace = true;
-  // Size _previewFace;
-  // List<Face> _faces = [];
 
-  ///
-  ///
-  ///
   @override
   void initState() {
     super.initState();
     FlutterMobileVision.start().then((previewSizes) => setState(() {
-      // _previewBarcode = previewSizes[_cameraBarcode].first;
       _previewOcr = previewSizes[_cameraOcr].first;
-      // _previewFace = previewSizes[_cameraFace].first;
     }));
   }
 
-  ///
-  ///
-  ///
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -72,18 +48,13 @@ class _OCRPageState2 extends State<OCRPage2> {
             title: Text('Flutter Mobile Vision'),
           ),
           body: TabBarView(children: [
-            // _getBarcodeScreen(context),
             _getOcrScreen(context),
-            // _getFaceScreen(context),
           ]),
         ),
       ),
     );
   }
 
-  ///
-  /// Scan formats
-  ///
   List<DropdownMenuItem<int>> _getFormats() {
     List<DropdownMenuItem<int>> formatItems = [];
 
@@ -147,260 +118,12 @@ class _OCRPageState2 extends State<OCRPage2> {
     return previewItems;
   }
 
-  ///
-  /// Barcode Screen
-  ///
-  // Widget _getBarcodeScreen(BuildContext context) {
-  //   List<Widget> items = [];
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       top: 8.0,
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: const Text('Camera:'),
-  //   ));
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: DropdownButton(
-  //       items: _getCameras(),
-  //       onChanged: (value) {
-  //         _previewBarcode = null;
-  //         setState(() => _cameraBarcode = value);
-  //       },
-  //       value: _cameraBarcode,
-  //     ),
-  //   ));
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       top: 8.0,
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: const Text('Preview size:'),
-  //   ));
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: DropdownButton(
-  //       items: _getPreviewSizes(_cameraBarcode),
-  //       onChanged: (value) {
-  //         setState(() => _previewBarcode = value);
-  //       },
-  //       value: _previewBarcode,
-  //     ),
-  //   ));
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       top: 8.0,
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: const Text('Scan format only:'),
-  //   ));
-  //
-  //   items.add(Padding(
-  //     padding: const EdgeInsets.only(
-  //       left: 18.0,
-  //       right: 18.0,
-  //     ),
-  //     child: DropdownButton(
-  //       items: _getFormats(),
-  //       onChanged: (value) => setState(
-  //             () => _onlyFormatBarcode = value,
-  //       ),
-  //       value: _onlyFormatBarcode,
-  //     ),
-  //   ));
-  //
-  //   items.add(SwitchListTile(
-  //     title: const Text('Auto focus:'),
-  //     value: _autoFocusBarcode,
-  //     onChanged: (value) => setState(() => _autoFocusBarcode = value),
-  //   ));
-  //
-  //   items.add(SwitchListTile(
-  //     title: const Text('Torch:'),
-  //     value: _torchBarcode,
-  //     onChanged: (value) => setState(() => _torchBarcode = value),
-  //   ));
-  //
-  //   items.add(SwitchListTile(
-  //     title: const Text('Multiple Scan:'),
-  //     value: _multipleBarcode,
-  //     onChanged: (value) => setState(() {
-  //       _multipleBarcode = value;
-  //       if (value) _waitTapBarcode = true;
-  //     }),
-  //   ));
-  //
-  //   items.add(SwitchListTile(
-  //     title: const Text('Wait a tap to capture:'),
-  //     value: _waitTapBarcode,
-  //     onChanged: (value) => setState(() {
-  //       _waitTapBarcode = value;
-  //       if (!value) _multipleBarcode = false;
-  //     }),
-  //   ));
-  //
-  //   items.add(SwitchListTile(
-  //     title: const Text('Show text:'),
-  //     value: _showTextBarcode,
-  //     onChanged: (value) => setState(() => _showTextBarcode = value),
-  //   ));
-  //
-  //   items.add(
-  //     Padding(
-  //       padding: const EdgeInsets.only(
-  //         left: 18.0,
-  //         right: 18.0,
-  //         bottom: 12.0,
-  //       ),
-  //       child: RaisedButton(
-  //         onPressed: _scan,
-  //         child: Text('SCAN!'),
-  //       ),
-  //     ),
-  //   );
-  //
-  //   items.addAll(
-  //     ListTile.divideTiles(
-  //       context: context,
-  //       tiles: _barcodes
-  //           .map(
-  //             (barcode) => BarcodeWidget(barcode),
-  //       )
-  //           .toList(),
-  //     ),
-  //   );
-  //
-  //   return ListView(
-  //     padding: const EdgeInsets.only(
-  //       top: 12.0,
-  //     ),
-  //     children: items,
-  //   );
-  // }
-
-  ///
-  /// Barcode Method
-  ///
-  // Future<Null> _scan() async {
-  //   List<Barcode> barcodes = [];
-  //   try {
-  //     barcodes = await FlutterMobileVision.scan(
-  //       flash: _torchBarcode,
-  //       autoFocus: _autoFocusBarcode,
-  //       formats: _onlyFormatBarcode,
-  //       multiple: _multipleBarcode,
-  //       waitTap: _waitTapBarcode,
-  //       showText: _showTextBarcode,
-  //       preview: _previewBarcode,
-  //       camera: _cameraBarcode,
-  //       fps: 15.0,
-  //     );
-  //   } on Exception {
-  //     barcodes.add(Barcode('Failed to get barcode.'));
-  //   }
-  //
-  //   if (!mounted) return;
-  //
-  //   setState(() => _barcodes = barcodes);
-  // }
 
   ///
   /// OCR Screen
   ///
   Widget _getOcrScreen(BuildContext context) {
     List<Widget> items = [];
-
-    items.add(Padding(
-      padding: const EdgeInsets.only(
-        top: 8.0,
-        left: 18.0,
-        right: 18.0,
-      ),
-      child: const Text('Camera:'),
-    ));
-
-    items.add(Padding(
-      padding: const EdgeInsets.only(
-        left: 18.0,
-        right: 18.0,
-      ),
-      child: DropdownButton(
-        items: _getCameras(),
-        onChanged: (value) {
-          _previewOcr = null;
-          setState(() => _cameraOcr = value);
-        },
-        value: _cameraOcr,
-      ),
-    ));
-
-    items.add(Padding(
-      padding: const EdgeInsets.only(
-        top: 8.0,
-        left: 18.0,
-        right: 18.0,
-      ),
-      child: const Text('Preview size:'),
-    ));
-
-    items.add(Padding(
-      padding: const EdgeInsets.only(
-        left: 18.0,
-        right: 18.0,
-      ),
-      child: DropdownButton(
-        items: _getPreviewSizes(_cameraOcr),
-        onChanged: (value) {
-          setState(() => _previewOcr = value);
-        },
-        value: _previewOcr,
-      ),
-    ));
-
-    items.add(SwitchListTile(
-      title: const Text('Auto focus:'),
-      value: _autoFocusOcr,
-      onChanged: (value) => setState(() => _autoFocusOcr = value),
-    ));
-
-    items.add(SwitchListTile(
-      title: const Text('Torch:'),
-      value: _torchOcr,
-      onChanged: (value) => setState(() => _torchOcr = value),
-    ));
-
-    items.add(SwitchListTile(
-      title: const Text('Return all texts:'),
-      value: _multipleOcr,
-      onChanged: (value) => setState(() => _multipleOcr = value),
-    ));
-
-    items.add(SwitchListTile(
-      title: const Text('Capture when tap screen:'),
-      value: _waitTapOcr,
-      onChanged: (value) => setState(() => _waitTapOcr = value),
-    ));
-
-    items.add(SwitchListTile(
-      title: const Text('Show text:'),
-      value: _showTextOcr,
-      onChanged: (value) => setState(() => _showTextOcr = value),
-    ));
-
     items.add(
       Padding(
         padding: const EdgeInsets.only(
@@ -408,7 +131,7 @@ class _OCRPageState2 extends State<OCRPage2> {
           right: 18.0,
           bottom: 12.0,
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: _read,
           child: Text('READ!'),
         ),
@@ -434,18 +157,15 @@ class _OCRPageState2 extends State<OCRPage2> {
     );
   }
 
-  ///
-  /// OCR Method
-  ///
   Future<Null> _read() async {
     List<OcrText> texts = [];
     List<OcrText> returntexts = [];
     try {
       texts = await FlutterMobileVision.read(
-        flash: _torchOcr,
-        autoFocus: _autoFocusOcr,
-        multiple: _multipleOcr,
-        waitTap: _waitTapOcr,
+        flash: false,
+        autoFocus: true,
+        multiple: true,
+        waitTap: true,
         showText: _showTextOcr,
         preview: _previewOcr,
         camera: _cameraOcr,
@@ -458,7 +178,9 @@ class _OCRPageState2 extends State<OCRPage2> {
     if (!mounted) return;
     for (var i = 0; i < texts.length; i++) {
       if (texts[i].value.contains("Ingredient")) {
-        returntexts.add(texts[i]);
+        String temp=texts[i].value.substring(texts[i].value.indexOf(':'),texts[i].value.length);
+        returntexts.add(OcrText(temp));
+       // returntexts[i].value.substring(returntexts[i].value.indexOf(':'),returntexts[i].value.length);
       }
     }
 
@@ -467,11 +189,6 @@ class _OCRPageState2 extends State<OCRPage2> {
 
 }
 
-
-
-///
-/// OcrTextWidget
-///
 class OcrTextWidget extends StatelessWidget {
   final OcrText ocrText;
 
@@ -487,29 +204,6 @@ class OcrTextWidget extends StatelessWidget {
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => OcrTextDetail(ocrText),
-        ),
-      ),
-    );
-  }
-}
-
-///
-/// FaceWidget
-///
-class FaceWidget extends StatelessWidget {
-  final Face face;
-
-  FaceWidget(this.face);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: const Icon(Icons.face),
-      title: Text(face.id.toString()),
-      trailing: const Icon(Icons.arrow_forward),
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => FaceDetail(face),
         ),
       ),
     );
