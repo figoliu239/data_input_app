@@ -4,9 +4,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
-
+import 'foodproduct.dart';
 
 class UploadingImageToFirebaseStorage extends StatefulWidget {
+  UploadingImageToFirebaseStorage({
+    Key key,
+    @required this.product,
+  }) : super(key: key);
+  FoodProduct product;
   @override
   _UploadingImageToFirebaseStorageState createState() =>
       _UploadingImageToFirebaseStorageState();
@@ -29,10 +34,10 @@ class _UploadingImageToFirebaseStorageState
     });
   }
 
-  Future uploadImageToFirebase(BuildContext context) async {
+  Future uploadImageToFirebase(BuildContext context,String productName) async {
     String fileName = basename(_imageFile.path);
     Reference firebaseStorageRef =
-    FirebaseStorage.instance.ref().child('uploads/$fileName');
+    FirebaseStorage.instance.ref().child('productImage/$productName');
     UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
     TaskSnapshot taskSnapshot = await uploadTask;
     taskSnapshot.ref.getDownloadURL().then(
@@ -96,7 +101,7 @@ class _UploadingImageToFirebaseStorageState
                     ],
                   ),
                 ),
-                uploadImageButton(context),
+                uploadImageButton(context,widget.product.name),
               ],
             ),
           ),
@@ -105,7 +110,7 @@ class _UploadingImageToFirebaseStorageState
     );
   }
 
-  Widget uploadImageButton(BuildContext context) {
+  Widget uploadImageButton(BuildContext context,String productName) {
     return Container(
       child: Stack(
         children: <Widget>[
@@ -120,7 +125,7 @@ class _UploadingImageToFirebaseStorageState
                 ),
                 borderRadius: BorderRadius.circular(30.0)),
             child: FlatButton(
-              onPressed: () => uploadImageToFirebase(context),
+              onPressed: () => uploadImageToFirebase(context,productName),
               child: Text(
                 "Upload Image",
                 style: TextStyle(fontSize: 20),

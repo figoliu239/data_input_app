@@ -43,7 +43,7 @@ class _SecondPageState extends State<SecondPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UploadingImageToFirebaseStorage()
+                          builder: (context) => UploadingImageToFirebaseStorage(product:product2)
                           ));
                   }
               ),
