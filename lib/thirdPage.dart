@@ -3,23 +3,23 @@ import 'package:data_input_app/foodproduct.dart';
 import 'package:flutter/material.dart';
 import 'foodproduct.dart';
 
-class ThirdPage extends StatefulWidget {
-  ThirdPage({
+class UploadPage extends StatefulWidget {
+  UploadPage({
     Key key,
     @required this.product,
   }) : super(key: key);
   FoodProduct product;
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _UploadPageState createState() => _UploadPageState();
 }
 
-class _SecondPageState extends State<ThirdPage> {
+class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
     FoodProduct product2 = widget.product;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Third Page (upload page)"),
+        title: Text("Upload page"),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -54,6 +54,8 @@ class _SecondPageState extends State<ThirdPage> {
       'dietarytFibre' : product.dietarytFibre,
       'sugars' : product.sugars,
       'sodium' : product.sodium,
+      'ingredients':product.ingredients,
+      'star': 0,
     }).then((value) => print("Uploaded")).catchError((onError) => print("Failed:" + onError));
   }
 }

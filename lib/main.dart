@@ -546,7 +546,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => OCRPage2(
-                            //product: tempProduct,
+                            product: tempProduct,
                           )));
                 },
                 child: new Text('Next Page'),
