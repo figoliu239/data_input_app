@@ -1,10 +1,8 @@
-import 'package:data_input_app/ocr_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'foodproduct.dart';
 import 'ocrpage2.dart';
-import 'ocr_page.dart';
-import 'secondPage.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -551,15 +549,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: new Text('Next Page'),
               ),
-              // ElevatedButton(
-              //     child: new Text('OCR Page'),
-              //     onPressed: () {
-              //       Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //               builder: (context) => OCRPage2(
-              //               )));
-              //     })
+
             ],
           ),
         ),

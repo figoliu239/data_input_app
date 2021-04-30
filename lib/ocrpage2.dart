@@ -93,7 +93,7 @@ class _OCRPageState2 extends State<OCRPage2> {
         child: ElevatedButton(
           onPressed: () {
             print(product.name);
-            print(_textsOcr[0].value);
+            //print(_textsOcr[0].value);
             Navigator.push(
                 context,
                 MaterialPageRoute(
