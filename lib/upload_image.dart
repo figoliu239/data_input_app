@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 //import 'package:path/path.dart';
 import 'foodproduct.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'main.dart';
 
 class UploadingImageToFirebaseStorage extends StatefulWidget {
   UploadingImageToFirebaseStorage({
@@ -73,6 +74,11 @@ class _UploadingImageToFirebaseStorageState
         })
         .then((value) => print("Uploaded"))
         .catchError((onError) => print("Failed:" + onError));
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => MyHomePage(title: 'Data Input Page')));
     //String fileName = basename(_imageFile.path);
   }
 
@@ -117,7 +123,9 @@ class _UploadingImageToFirebaseStorageState
                   size: 50,
                 ),
               ),
-              SizedBox(height: 8,),
+              SizedBox(
+                height: 8,
+              ),
               ElevatedButton(
                 onPressed: () => uploadToFirebase(context, product2),
                 child: Text(
