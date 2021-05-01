@@ -36,41 +36,44 @@ class _UploadingImageToFirebaseStorageState
     });
   }
 
-  Future uploadToFirebase(BuildContext context,FoodProduct product) async {
-    product.calculateGrade();//calulate grade here, grade becomes not null
-    String name=product.name;
+  Future uploadToFirebase(BuildContext context, FoodProduct product) async {
+    product.calculateGrade(); //calulate grade here, grade becomes not null
+    String name = product.name;
     //todo:need barcode
-    Reference firebaseStorageRef = FirebaseStorage.instance.ref().child('productImage/'+name);
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child('productImage/' + name);
     UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
     TaskSnapshot taskSnapshot = await uploadTask;
     //String downloadURL = await FirebaseStorage.instance.ref('productImage/'+name).getDownloadURL(); this is working too
     String downloadURL = await taskSnapshot.ref.getDownloadURL();
     taskSnapshot.ref.getDownloadURL().then(
           (value) => print("Done: $value"),
-    );
-    FirebaseFirestore.instance.collection('foodProduct')
+        );
+    FirebaseFirestore.instance
+        .collection('foodProduct')
         .doc(product.name)
         .set({
-      'name':product.name,
-      'barcode':"null",
-      'image':downloadURL,
-      'volumeOrweight':product.volumeOrweight,
-      'category': product.category,
-      'energy' : product.energy,
-      'protein' : product.protein,
-      'totalFat' : product.totalFat,
-      'saturatedFat' : product.saturatedFat,
-      'transFat' : product.transFat,
-      'carbohydrates' : product.carbohydrates,
-      'dietarytFibre' : product.dietarytFibre,
-      'sugars' : product.sugars,
-      'sodium' : product.sodium,
-      'ingredients':product.ingredients,
-      'star': 0,
-      'grade':product.grade,
-    }).then((value) => print("Uploaded")).catchError((onError) => print("Failed:" + onError));
+          'name': product.name,
+          'barcode': product.barcode,
+          'image': downloadURL,
+          'volumeOrweight': product.volumeOrweight,
+          'category': product.category,
+          'energy': product.energy,
+          'protein': product.protein,
+          'totalFat': product.totalFat,
+          'saturatedFat': product.saturatedFat,
+          'transFat': product.transFat,
+          'carbohydrates': product.carbohydrates,
+          'dietarytFibre': product.dietarytFibre,
+          'sugars': product.sugars,
+          'sodium': product.sodium,
+          'ingredients': product.ingredients,
+          'star': 0,
+          'grade': product.grade,
+        })
+        .then((value) => print("Uploaded"))
+        .catchError((onError) => print("Failed:" + onError));
     //String fileName = basename(_imageFile.path);
-
   }
 
   @override
@@ -84,11 +87,10 @@ class _UploadingImageToFirebaseStorageState
         title: Text("Camera page"),
       ),
       body: Container(
-        margin: const EdgeInsets.only(top: 80),
+        margin: const EdgeInsets.only(top: 40),
         child: Center(
           child: Column(
             children: <Widget>[
-
               Expanded(
                 child: Stack(
                   children: <Widget>[
@@ -100,20 +102,24 @@ class _UploadingImageToFirebaseStorageState
                         borderRadius: BorderRadius.circular(30.0),
                         child: _imageFile != null
                             ? Image.file(_imageFile)
-                            : ElevatedButton(
-                          child: Icon(
-                            Icons.add_a_photo,
-                            size: 50,
-                          ),
-                          onPressed: pickImage,
-                        ),
+                            : Container(
+                                color: Colors.white,
+                              ),
                       ),
                     ),
                   ],
                 ),
               ),
               ElevatedButton(
-                onPressed: () => uploadToFirebase(context,product2),
+                onPressed: pickImage,
+                child: Icon(
+                  Icons.add_a_photo,
+                  size: 50,
+                ),
+              ),
+              SizedBox(height: 8,),
+              ElevatedButton(
+                onPressed: () => uploadToFirebase(context, product2),
                 child: Text(
                   "Upload Image and product",
                 ),
