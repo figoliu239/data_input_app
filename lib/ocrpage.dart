@@ -65,7 +65,7 @@ class _OCRPageState extends State<OCRPage> {
         ),
         child: ElevatedButton(
           onPressed: _read,
-          child: Text('Start Scan'),
+          child: Text('Start OCR Scan'),
         ),
       ),
     );
