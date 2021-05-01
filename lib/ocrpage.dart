@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
 import 'ocr_text_detail.dart';
 import 'foodproduct.dart';
-import 'secondPage.dart';
 import 'upload_image.dart';
-class OCRPage2 extends StatefulWidget {
-  OCRPage2({
+class OCRPage extends StatefulWidget {
+  OCRPage({
     Key key,
     @required this.product,
   }) : super(key: key);
   FoodProduct product;
   @override
-  _OCRPageState2 createState() => _OCRPageState2();
+  _OCRPageState createState() => _OCRPageState();
 }
 
-class _OCRPageState2 extends State<OCRPage2> {
+class _OCRPageState extends State<OCRPage> {
   int _cameraOcr = FlutterMobileVision.CAMERA_BACK;
   bool _showTextOcr = true;
   Size _previewOcr;
@@ -31,6 +30,7 @@ class _OCRPageState2 extends State<OCRPage2> {
   @override
   Widget build(BuildContext context) {
     FoodProduct product = widget.product;
+    print(product.barcode);
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -52,21 +52,6 @@ class _OCRPageState2 extends State<OCRPage2> {
         ),
       ),
     );
-  }
-
-  List<DropdownMenuItem<int>> _getFormats() {
-    List<DropdownMenuItem<int>> formatItems = [];
-
-    Barcode.mapFormat.forEach((key, value) {
-      formatItems.add(
-        DropdownMenuItem(
-          child: Text(value),
-          value: key,
-        ),
-      );
-    });
-
-    return formatItems;
   }
 
   Widget _getOcrScreen(BuildContext context, FoodProduct product) {
@@ -159,8 +144,6 @@ class _OCRPageState2 extends State<OCRPage2> {
 
     setState(() => _textsOcr = returntexts);
   }
-
-  void _nextPage(FoodProduct product) {}
 }
 
 class OcrTextWidget extends StatelessWidget {

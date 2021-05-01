@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
+//import 'package:path/path.dart';
 import 'foodproduct.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -77,8 +77,8 @@ class _UploadingImageToFirebaseStorageState
   Widget build(BuildContext context) {
     FoodProduct product2 = widget.product;
     String ingredient = widget.ingredient;
-    List<String> ingredient_list = ingredient.split(",");
-    product2.ingredients = ingredient_list;
+    List<String> ingredientList = ingredient.split(",");
+    product2.ingredients = ingredientList;
     return Scaffold(
       appBar: AppBar(
         title: Text("Camera page"),

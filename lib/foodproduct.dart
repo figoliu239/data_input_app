@@ -3,6 +3,7 @@
 class FoodProduct {
   String name;
   String category;
+  String barcode;
   double volumeOrweight;
 
   double energy = 0;
@@ -35,6 +36,7 @@ class FoodProduct {
     this.name,
     this.category,
     this.volumeOrweight,
+    this.barcode,
     this.energy,
     this.protein,
     this.totalFat,
@@ -64,6 +66,7 @@ class FoodProduct {
   FoodProduct copy(FoodProduct temp){
     this.name = temp.name;
     this.category = temp.category;
+    this.barcode=temp.barcode;
     this.volumeOrweight= temp.volumeOrweight;
 
     this.energy = temp.energy;

@@ -27,8 +27,8 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     FoodProduct product2 = widget.product;
     String ingredient = widget.ingredient;
-    List<String> ingredient_list = ingredient.split(",");
-    product2.ingredients = ingredient_list;
+    List<String> ingredientList = ingredient.split(",");
+    product2.ingredients = ingredientList;
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Page"),
