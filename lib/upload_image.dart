@@ -11,8 +11,10 @@ class UploadingImageToFirebaseStorage extends StatefulWidget {
   UploadingImageToFirebaseStorage({
     Key key,
     @required this.product,
+    @required this.ingredient,
   }) : super(key: key);
   FoodProduct product;
+  String ingredient;
   @override
   _UploadingImageToFirebaseStorageState createState() =>
       _UploadingImageToFirebaseStorageState();
@@ -36,11 +38,22 @@ class _UploadingImageToFirebaseStorageState
 
   Future uploadToFirebase(BuildContext context,FoodProduct product) async {
     product.calculateGrade();//calulate grade here, grade becomes not null
+    String name=product.name;
     //todo:need barcode
+    Reference firebaseStorageRef = FirebaseStorage.instance.ref().child('productImage/'+name);
+    UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    //String downloadURL = await FirebaseStorage.instance.ref('productImage/'+name).getDownloadURL(); this is working too
+    String downloadURL = await taskSnapshot.ref.getDownloadURL();
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => print("Done: $value"),
+    );
     FirebaseFirestore.instance.collection('foodProduct')
         .doc(product.name)
         .set({
       'name':product.name,
+      'barcode':"null",
+      'image':downloadURL,
       'volumeOrweight':product.volumeOrweight,
       'category': product.category,
       'energy' : product.energy,
@@ -57,16 +70,15 @@ class _UploadingImageToFirebaseStorageState
       'grade':product.grade,
     }).then((value) => print("Uploaded")).catchError((onError) => print("Failed:" + onError));
     //String fileName = basename(_imageFile.path);
-    Reference firebaseStorageRef = FirebaseStorage.instance.ref().child('productImage/$product.name');
-    UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
-    TaskSnapshot taskSnapshot = await uploadTask;
-    taskSnapshot.ref.getDownloadURL().then(
-          (value) => print("Done: $value"),
-    );
+
   }
 
   @override
   Widget build(BuildContext context) {
+    FoodProduct product2 = widget.product;
+    String ingredient = widget.ingredient;
+    List<String> ingredient_list = ingredient.split(",");
+    product2.ingredients = ingredient_list;
     return Scaffold(
       appBar: AppBar(
         title: Text("Camera page"),
@@ -101,7 +113,7 @@ class _UploadingImageToFirebaseStorageState
                 ),
               ),
               ElevatedButton(
-                onPressed: () => uploadToFirebase(context,widget.product),
+                onPressed: () => uploadToFirebase(context,product2),
                 child: Text(
                   "Upload Image and product",
                 ),

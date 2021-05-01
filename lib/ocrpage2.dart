@@ -3,6 +3,7 @@ import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
 import 'ocr_text_detail.dart';
 import 'foodproduct.dart';
 import 'secondPage.dart';
+import 'upload_image.dart';
 class OCRPage2 extends StatefulWidget {
   OCRPage2({
     Key key,
@@ -97,9 +98,10 @@ class _OCRPageState2 extends State<OCRPage2> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SecondPage(
+                    builder: (context) => UploadingImageToFirebaseStorage(
                       product: product,
-                      ingredient:_textsOcr[0].value,
+                      //ingredient:_textsOcr[0].value,
+                      ingredient:"water,juice",
                     )));
           },
           child: Text('Next Page'),
