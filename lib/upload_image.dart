@@ -86,6 +86,8 @@ class _UploadingImageToFirebaseStorageState
   Widget build(BuildContext context) {
     FoodProduct product2 = widget.product;
     String ingredient = widget.ingredient;
+    String temp = ingredient.substring(
+        ingredient.indexOf(':') + 1, ingredient.length);
     List<String> ingredientList = ingredient.split(",");
     product2.ingredients = ingredientList;
     return Scaffold(

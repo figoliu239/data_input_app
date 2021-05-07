@@ -132,10 +132,10 @@ class _OCRPageState extends State<OCRPage> {
 
     if (!mounted) return;
     for (var i = 0; i < texts.length; i++) {
-      if (texts[i].value.contains("ingredient")) {
+      if (texts[i].value.contains("Ingredient")) {
         print(texts[i].value);
         String temp = texts[i].value.substring(
-            texts[i].value.indexOf(':') + 1, texts[i].value.indexOf('.'));
+            texts[i].value.indexOf('Ingredient'), texts[i].value.length);
         // if(temp.contains(":")){temp=temp}
         returntexts.add(OcrText(temp));
         // returntexts[i].value.substring(returntexts[i].value.indexOf(':'),returntexts[i].value.length);
