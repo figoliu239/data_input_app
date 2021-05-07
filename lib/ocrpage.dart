@@ -141,7 +141,7 @@ class _OCRPageState extends State<OCRPage> {
         // returntexts[i].value.substring(returntexts[i].value.indexOf(':'),returntexts[i].value.length);
       }
     }
-    if (returntexts.isEmpty){returntexts.add(OcrText('Failed to recognize text.'));}
+    if (returntexts.isEmpty){returntexts.add(OcrText('Failed to recognize the Ingredient list.'));}
 
     setState(() => _textsOcr = returntexts);
   }
