@@ -24,11 +24,6 @@ class _BarcodePageState extends State<BarcodePage> {
     super.initState();
   }
 
-  startBarcodeScanStream() async {
-    FlutterBarcodeScanner.getBarcodeStreamReceiver(
-            "#ff6666", "Cancel", true, ScanMode.BARCODE)
-        .listen((barcode) => print(barcode));
-  }
 
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
@@ -59,9 +54,6 @@ class _BarcodePageState extends State<BarcodePage> {
                     ElevatedButton(
                         onPressed: () => scanBarcodeNormal(),
                         child: Text("Start barcode scan")),
-                    ElevatedButton(
-                        onPressed: () => startBarcodeScanStream(),
-                        child: Text("Start barcode scan stream")),
                     Text('Scan result : $_scanBarcode\n',
                         style: TextStyle(fontSize: 20)),
                     ElevatedButton(

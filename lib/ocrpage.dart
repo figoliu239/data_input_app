@@ -85,8 +85,8 @@ class _OCRPageState extends State<OCRPage> {
                 MaterialPageRoute(
                     builder: (context) => UploadingImageToFirebaseStorage(
                       product: product,
-                      //ingredient:_textsOcr[0].value,
-                      ingredient:"water,juice",
+                      ingredient:_textsOcr[0].value,
+                      // ingredient:"water,juice",
                     )));
           },
           child: Text('Next Page'),
@@ -124,7 +124,7 @@ class _OCRPageState extends State<OCRPage> {
         showText: _showTextOcr,
         preview: _previewOcr,
         camera: _cameraOcr,
-        fps: 0.2,
+        fps: 0.05,
       );
     } on Exception {
       texts.add(OcrText('Failed to recognize text.'));
@@ -132,15 +132,16 @@ class _OCRPageState extends State<OCRPage> {
 
     if (!mounted) return;
     for (var i = 0; i < texts.length; i++) {
-      if (texts[i].value.contains("Ingredient")) {
+      if (texts[i].value.contains("ingredient")) {
         print(texts[i].value);
         String temp = texts[i].value.substring(
-            texts[i].value.indexOf('Ingredient') + 2, texts[i].value.indexOf('.'));
+            texts[i].value.indexOf(':') + 1, texts[i].value.indexOf('.'));
         // if(temp.contains(":")){temp=temp}
         returntexts.add(OcrText(temp));
         // returntexts[i].value.substring(returntexts[i].value.indexOf(':'),returntexts[i].value.length);
       }
     }
+    if (returntexts.isEmpty){returntexts.add(OcrText('Failed to recognize text.'));}
 
     setState(() => _textsOcr = returntexts);
   }
