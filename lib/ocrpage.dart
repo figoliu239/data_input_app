@@ -32,6 +32,7 @@ class _OCRPageState extends State<OCRPage> {
     FoodProduct product = widget.product;
     print(product.barcode);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         buttonColor: Colors.blue,
